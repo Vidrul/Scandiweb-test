@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import ProductCard from "../../components/common/productCard/ProductCard";
+import ProductCard from "../../components/ui/productCard/ProductCard";
 import apolloClient from "../../query/apolloClient";
 import { GET_PRODUCTS } from "../../query/product";
 import style from "./style.module.scss";
