@@ -1,0 +1,124 @@
+.cart_title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0 0 60px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart_item {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 0 0 20px 0;
+
+  &::after {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background: #e5e5e5;
+  }
+}
+
+.cart_description {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart_description_brand {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 27px;
+  margin: 20px 0 16px 0;
+}
+
+.cart_description_name {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 27px;
+  margin: 0 0 20px 0;
+}
+
+.cart_description_price {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 18px;
+  margin: 0 0 20px 0;
+}
+
+.cart_description_attributes {
+  display: flex;
+  flex-direction: column;
+}
+
+.atribute {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 15px 0;
+
+  p {
+    display: block;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    width: 100%;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+}
+
+.atribute_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 45px;
+  border: 1px solid #1d1f22;
+  margin: 0 12px 0 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.selected {
+  background-color: #1d1f22;
+  color: #fff;
+}
+
+.cart_actions {
+  display: flex;
+  margin: 20px 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 160%;
+
+  div {
+    &:first-child {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      margin-right: 15px;
+
+      button {
+        width: 45px;
+        height: 45px;
+        border: 1px solid #1d1f22;
+        background: #fff;
+        cursor: pointer;
+
+        &:hover {
+          color: #fff;
+          background: #1d1f22;
+        }
+      }
+    }
+  }
+}

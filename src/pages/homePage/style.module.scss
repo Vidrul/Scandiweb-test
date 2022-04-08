@@ -1,0 +1,12 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 100px 40px;
+  padding-bottom: 200px;
+}
+
+.category {
+  margin-bottom: 100px;
+  font-weight: 400px;
+  font-size: 42px;
+}
