@@ -65,15 +65,17 @@ class NavBar extends Component {
                 <span>{this.props.symbol}</span>
                 <img src={this.state.currensyModal ? up : down} alt="" />
                 {this.state.currensyModal ? (
-                  <div className={style.currency_modal}>
-                    {this.props.currencies.map((c, i) => (
-                      <span
-                        onClick={() => {
-                          this.props.dispatch(currensyChanged(c.symbol));
-                        }}
-                        key={i}
-                      >{`${c.symbol} ${c.label}`}</span>
-                    ))}
+                  <div className={style.currency__modal}>
+                    <div className={style.content}>
+                      {this.props.currencies.map((c, i) => (
+                        <span
+                          onClick={() => {
+                            this.props.dispatch(currensyChanged(c.symbol));
+                          }}
+                          key={i}
+                        >{`${c.symbol} ${c.label}`}</span>
+                      ))}
+                    </div>
                   </div>
                 ) : (
                   ""

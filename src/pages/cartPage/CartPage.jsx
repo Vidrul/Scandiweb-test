@@ -50,22 +50,32 @@ class CartPage extends Component {
                   {item.atributes.map((atribute) => (
                     <div key={atribute.id} className={style.atribute}>
                       <p>{atribute.name}:</p>
-                      {atribute.items.map((atributeItem) => (
-                        <div
-                          key={atributeItem.id}
-                          style={{
-                            background: `${atributeItem.value}`,
-                          }}
-                          className={`${style.atribute_item} ${
-                            item.selectedAtributeId[atribute.name] ===
-                            atributeItem.id
-                              ? `${style.selected}`
-                              : ""
-                          }`}
-                        >
-                          {atribute.id === "Color" ? "" : atributeItem.value}
-                        </div>
-                      ))}
+                      {atribute.id !== "Color"
+                        ? atribute.items.map((atributeItem) => (
+                            <div
+                              key={atributeItem.id}
+                              className={`${style.atribute_item} ${
+                                item.selectedAtributeId[atribute.name] ===
+                                atributeItem.id
+                                  ? `${style.selected}`
+                                  : ""
+                              }`}
+                            >
+                              {atributeItem.value}
+                            </div>
+                          ))
+                        : atribute.items.map((atributeItem) => {
+                            return atributeItem.id ===
+                              item.selectedAtributeId.Color ? (
+                              <div
+                                key={atributeItem.id}
+                                style={{
+                                  background: `${atributeItem.value}`,
+                                }}
+                                className={style.atribute_item}
+                              ></div>
+                            ) : null;
+                          })}
                     </div>
                   ))}
                 </div>

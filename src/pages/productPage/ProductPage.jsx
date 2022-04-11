@@ -73,9 +73,6 @@ class ProductPage extends Component {
         error: error.message,
       });
     }
-
-    document.querySelector("#description").innerHTML =
-      this.state.product && this.state.product.description;
   }
 
   isValid() {
@@ -145,7 +142,12 @@ class ProductPage extends Component {
                   ADD TO CART
                 </button>
               </div>
-              <div id="description"></div>
+              <div
+                id="description"
+                dangerouslySetInnerHTML={{
+                  __html: this.state.product.description,
+                }}
+              />
             </section>
           </div>
         )}

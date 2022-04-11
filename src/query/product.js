@@ -1,14 +1,25 @@
 import { gql } from "@apollo/client";
 
 export const GET_PRODUCTS = gql`
-  query {
-    categories {
+  query ($input: String!) {
+    category(input: { title: $input }) {
       products {
         id
         name
         inStock
         gallery
+        description
         category
+        attributes {
+          id
+          type
+          name
+          items {
+            displayValue
+            value
+            id
+          }
+        }
         prices {
           currency {
             label
@@ -16,17 +27,6 @@ export const GET_PRODUCTS = gql`
           }
           amount
         }
-        attributes {
-          items {
-            value
-            displayValue
-            id
-          }
-          type
-          name
-          id
-        }
-        description
         brand
       }
     }

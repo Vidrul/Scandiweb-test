@@ -12,22 +12,19 @@ class HomePage extends Component {
     error: null,
   };
 
-  transformData(data) {
-    const newArr = [];
-    for (const iterator of data) {
-      newArr.push(...iterator.products);
-    }
-    return newArr;
-  }
-
-  async componentDidMount() {
+  async getGoods() {
     try {
       const response = await apolloClient.query({
         query: GET_PRODUCTS,
+        variables: {
+          input: !this.props.category ? "all" : this.props.category,
+        },
       });
 
+      console.log(response.data.category);
+
       this.setState({
-        products: this.transformData([...response.data.categories]),
+        products: response.data.category.products,
         isLoading: response.loading,
       });
       return;
@@ -38,15 +35,17 @@ class HomePage extends Component {
     }
   }
 
-  filterProducts(products = []) {
-    return !this.props.category
-      ? products
-      : products.filter((p) => p.category === this.props.category);
+  componentDidMount() {
+    this.getGoods();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.category !== this.props.category) {
+      this.getGoods();
+    }
   }
 
   render() {
-    const filtredProducts = this.filterProducts(this.state.products);
-
     return (
       <>
         <section>
@@ -58,7 +57,7 @@ class HomePage extends Component {
           </p>
           <div className={style.content}>
             {!this.isLoading
-              ? filtredProducts.map((p, i) => (
+              ? this.state.products.map((p, i) => (
                   <ProductCard
                     key={i}
                     id={p.id}

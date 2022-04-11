@@ -50,14 +50,7 @@ class ProductCard extends Component {
   render() {
     return (
       <div className={style.card}>
-        <Link
-          to={`${this.props.category}/${this.props.id}`}
-          onClick={(e) => {
-            if (!this.props.inStock) {
-              e.preventDefault();
-            }
-          }}
-        >
+        <Link to={`${this.props.category}/${this.props.id}`}>
           {!this.props.inStock && (
             <div className={style.available}>
               <p>OUT OF STOCK</p>
@@ -98,7 +91,7 @@ class ProductCard extends Component {
             </div>
           )}
           <div className={style.card_description}>
-            <span>{this.props.name}</span>
+            <span>{this.props.brand} {this.props.name}</span>
             <span>{`${this.props.symbol} ${this.displayPrice()}`}</span>
           </div>
         </Link>

@@ -46,8 +46,18 @@ class Slider extends Component {
             </div>
           );
         })}
-        <BtnSlider moveSlide={this.nextSlide.bind(this)} direction={"next"} />
-        <BtnSlider moveSlide={this.prevSlide.bind(this)} direction={"prev"} />
+        {this.props.dataSlider.length <= 1 ? null : (
+          <>
+            <BtnSlider
+              moveSlide={this.nextSlide.bind(this)}
+              direction={"next"}
+            />
+            <BtnSlider
+              moveSlide={this.prevSlide.bind(this)}
+              direction={"prev"}
+            />
+          </>
+        )}
       </div>
     );
   }

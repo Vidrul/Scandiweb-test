@@ -28,6 +28,7 @@ class MiniCartItem extends Component {
   }
 
   checkSelectedAttribute(name, value) {
+    console.log(name, value);
     return this.props.selectedAtributeId[name] === value ? style.selected : "";
   }
 
@@ -42,25 +43,33 @@ class MiniCartItem extends Component {
           <div className={style.atributes}>
             {this.props.atributes &&
               this.props.atributes.map((atribute) => (
-                <div key={atribute.id} className={style.atributes_item}>
-                  {atribute.items.map((item) => (
-                    <div
-                      key={item.id}
-                      style={{
-                        backgroundColor: `${item.value}`,
-                        background: this.checkSelectedAttribute(
-                          atribute.name,
-                          item.id
-                        ),
-                      }}
-                      className={this.checkSelectedAttribute(
-                        atribute.name,
-                        item.id
-                      )}
-                    >
-                      {atribute.id === "Color" ? "" : item.value}
-                    </div>
-                  ))}
+                <div key={atribute.id}>
+                  <span className={style.atribute_name}>{atribute.name}:</span>
+                  <div className={style.atributes_item}>
+                    {atribute.id !== "Color"
+                      ? atribute.items.map((item) => (
+                          <div
+                            key={item.id}
+                            className={this.checkSelectedAttribute(
+                              atribute.name,
+                              item.id
+                            )}
+                          >
+                            {item.value}
+                          </div>
+                        ))
+                      : atribute.items.map((item) => {
+                          return item.id ===
+                            this.props.selectedAtributeId.Color ? (
+                            <div
+                              key={item.id}
+                              style={{
+                                backgroundColor: `${item.value}`,
+                              }}
+                            ></div>
+                          ) : null;
+                        })}
+                  </div>
                 </div>
               ))}
           </div>

@@ -70,20 +70,21 @@
   border-color: #5ece7b !important;
 }
 
-.currency_modal {
+.currency__modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
   position: absolute;
   width: 110px;
-  height: 170px;
-  top: 30px;
-  left: -38px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  top: 70px;
+  right: 260px;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
   background: #fff;
-
-  overflow-y: scroll;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 
   span {
     font-weight: 500;
