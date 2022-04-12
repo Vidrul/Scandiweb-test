@@ -45,6 +45,7 @@ const cartSlice = createSlice({
       const { cost, quantity } = state.entities.reduce(
         (total, item) => {
           const prices = item.price.map((p) => p.amount * item.amount);
+          console.log(prices);
 
           total.cost.USD += prices[0];
           total.cost.GBP += prices[1];
@@ -67,11 +68,11 @@ const cartSlice = createSlice({
         }
       );
 
-      state.totalPrice.USD = +cost.USD.toFixed(2);
-      state.totalPrice.GBP = +cost.GBP.toFixed(2);
-      state.totalPrice.AUD = +cost.AUD.toFixed(2);
-      state.totalPrice.JPY = +cost.JPY.toFixed(2);
-      state.totalPrice.RUB = +cost.RUB.toFixed(2);
+      state.totalPrice.USD = +cost.USD;
+      state.totalPrice.GBP = +cost.GBP;
+      state.totalPrice.AUD = +cost.AUD;
+      state.totalPrice.JPY = +cost.JPY;
+      state.totalPrice.RUB = +cost.RUB;
 
       state.totalAmount = quantity;
     },

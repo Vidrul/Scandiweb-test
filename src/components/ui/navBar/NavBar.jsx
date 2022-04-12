@@ -119,7 +119,7 @@ class NavBar extends Component {
               <span>Total</span>
               <span>
                 {this.props.symbol}
-                {this.displayPrice()}
+                {this.displayPrice().toFixed(2)}
               </span>
             </div>
             <div className={style.modal_actions}>

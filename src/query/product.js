@@ -38,6 +38,7 @@ export const GET_PRODUCT = gql`
     product(id: $productId) {
       id
       name
+      inStock
       gallery
       description
       prices {

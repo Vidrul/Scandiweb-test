@@ -14,7 +14,7 @@ class CartPage extends Component {
       (price) => price.currency.symbol === this.props.currensySymbol
     );
 
-    return price.amount;
+    return price.amount.toFixed(2);
   }
 
   handleDecrease(amount, id) {

@@ -4,6 +4,7 @@ import apolloClient from "../../query/apolloClient";
 import { GET_PRODUCT } from "../../query/product";
 import { addToCart } from "../../store/reducers/CartSlice";
 import style from "./style.module.scss";
+import DOMPurify from "dompurify";
 
 class ProductPage extends Component {
   state = {
@@ -122,10 +123,24 @@ class ProductPage extends Component {
                             : ""
                         }
                         style={{
-                          background: `${item.value}`,
+                          background: item.value,
                         }}
                       >
-                        {atribute.id === "Color" ? "" : item.value}
+                        {atribute.id === "Color" ? (
+                          this.state.attributes.Color === item.id ? (
+                            <span
+                              style={{
+                                color: item.id === "White" ? "black" : "white",
+                              }}
+                            >
+                              S
+                            </span>
+                          ) : (
+                            ""
+                          )
+                        ) : (
+                          item.value
+                        )}
                       </div>
                     ))}
                   </div>
@@ -138,14 +153,21 @@ class ProductPage extends Component {
                 </span>
               </div>
               <div className={style.action}>
-                <button disabled={valid} onClick={this.handleClick.bind(this)}>
-                  ADD TO CART
+                <button
+                  disabled={!this.state.product.inStock ? true : valid}
+                  onClick={this.handleClick.bind(this)}
+                >
+                  {!this.state.product.inStock
+                    ? "OUT OF STOCK"
+                    : valid
+                    ? "CHOSE ATTRIBUTES"
+                    : "ADD TO CART"}
                 </button>
               </div>
               <div
                 id="description"
                 dangerouslySetInnerHTML={{
-                  __html: this.state.product.description,
+                  __html: DOMPurify.sanitize(this.state.product.description),
                 }}
               />
             </section>

@@ -10,7 +10,7 @@ class ProductCard extends Component {
       (price) => price.currency.symbol === this.props.symbol
     );
 
-    return price.amount;
+    return  price.amount.toFixed(2);
   }
 
   talkeAtributes(atributes = []) {
