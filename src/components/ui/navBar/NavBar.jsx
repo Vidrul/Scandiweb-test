@@ -63,6 +63,7 @@ class NavBar extends Component {
                 className={style.navBar_currency}
               >
                 <span>{this.props.symbol}</span>
+
                 <img src={this.state.currensyModal ? up : down} alt="" />
                 {this.state.currensyModal ? (
                   <div className={style.currency__modal}>
